@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-class App extends Component {
-  render() {
+function List(props){
+  
+    function addHandler(){
+      props.estado( props.count + parseInt(numero));
+    }
+  const [numero, setNumero] = useState(0);
+
+  return (
+      <React.Fragment>
+          <input type="number" value={numero} onChange={e=>setNumero(e.target.value)} ></input>
+          <button type="button" onClick={addHandler}>GO</button>
+      </React.Fragment>
+  );
+}
+
+ function App () {
+  const [count, setCount] = useState(0);
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="App">
+            <h2>Principal {count}</h2>
+            <List count={count} estado={setCount}></List>
+        </div>
     );
-  }
 }
 
 export default App;
