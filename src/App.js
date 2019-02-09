@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './App.css';
 
 function List(props){
@@ -17,6 +17,12 @@ function List(props){
 }
 
  function App () {
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+  
   const [count, setCount] = useState(0);
     return (
         <div className="App">
